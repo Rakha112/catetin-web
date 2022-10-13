@@ -80,7 +80,7 @@
       justify-content: flex-start;
       align-items: flex-start;
     }
-    .button--putih {
+    .button__login {
       @include breakpoint(large) {
         display: none;
       }

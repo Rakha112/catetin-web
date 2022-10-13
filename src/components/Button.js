@@ -1,15 +1,21 @@
 import React from "react";
 import "../css/components/button.css";
-const Button = ({ buttonText }) => {
+const Button = ({ buttonText, klik }) => {
   return (
     <div
       className={
         buttonText === "Log In"
-          ? "button button--putih"
-          : "button button--hitam"
+          ? "button button__login"
+          : "button button__signup"
       }
     >
-      <button>{buttonText}</button>
+      <button
+        onClick={() => {
+          klik();
+        }}
+      >
+        {buttonText}
+      </button>
     </div>
   );
 };
