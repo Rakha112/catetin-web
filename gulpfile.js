@@ -13,13 +13,13 @@ function scssTaskComponents() {
   return src("src/scss/components/*.scss", { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(dest("src/css", { sourcemaps: "." }));
+    .pipe(dest("src/css/components", { sourcemaps: "." }));
 }
 function scssTaskPages() {
   return src("src/scss/pages/*.scss", { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(dest("src/css", { sourcemaps: "." }));
+    .pipe(dest("src/css/pages", { sourcemaps: "." }));
 }
 
 // Watch Task
