@@ -1,0 +1,89 @@
+@use "../util/" as *;
+
+.landingpage {
+  overflow-y: visible;
+  &__container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: rem(506);
+    margin: 0 auto;
+    padding: rem(64) 0;
+    @include breakpoint(large) {
+      height: 100vh;
+      padding: 0 rem(50);
+      flex-direction: row-reverse;
+      justify-content: center;
+      max-width: rem(1200);
+      margin: 0 auto;
+    }
+  }
+  &__gambar {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    img {
+      width: 100%;
+      padding: rem(40);
+      @include breakpoint(large) {
+        padding: rem(0);
+      }
+    }
+    @include breakpoint(large) {
+      flex: 1 1 0px;
+    }
+  }
+  &__text {
+    @include breakpoint(large) {
+      flex: 1 1 0px;
+    }
+    h1 {
+      text-align: center;
+      font-weight: 500;
+      font-size: rem(40);
+      font-weight: 600;
+      @include breakpoint(medium) {
+        font-size: rem(50);
+      }
+      @include breakpoint(large) {
+        text-align: left;
+        font-size: rem(64);
+        flex: 1 1 0px;
+      }
+    }
+    p {
+      // opacity: 0;
+      font-size: rem(14);
+      text-align: center;
+      padding: rem(20) rem(40) rem(20) rem(40);
+      font-weight: 400;
+      line-height: 1.75;
+      @include breakpoint(medium) {
+        font-size: rem(22);
+      }
+      @include breakpoint(large) {
+        padding-left: 0;
+        text-align: justify;
+        font-size: rem(20);
+        padding: rem(20) rem(120) rem(20) 0px;
+      }
+    }
+  }
+  &__button {
+    display: flex;
+    gap: rem(12);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint(large) {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .button--putih {
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
+  }
+}
