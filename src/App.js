@@ -1,10 +1,40 @@
 import LandingPage from "./pages/LandingPage";
-
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
+  const initialState = {
+    loginBox: false,
+    signupBox: false,
+  };
+
+  const rootReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case "LOGIN_BOX":
+        return {
+          ...state,
+          loginBox: action.payload,
+        };
+      case "SIGNUP_BOX":
+        return {
+          ...state,
+          signupBox: action.payload,
+        };
+      default:
+        return state;
+    }
+  };
+
+  const store = configureStore({ reducer: rootReducer });
+
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
