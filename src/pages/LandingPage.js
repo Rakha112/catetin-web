@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import "../css/pages/landingpage.css";
 import Gambar from "../images/CATETIN.png";
 import Button from "../components/Button";
@@ -7,7 +7,12 @@ import Navbar from "../components/Navbar";
 import SignupBox from "../components/SignupBox";
 import { connect } from "react-redux";
 import gsap from "gsap";
-const LandingPage = ({ setLoginBox, setSignupBox }) => {
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+const LandingPage = ({ setLoginBox, setSignupBox, loginBox, signupBox }) => {
+  axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const location = useLocation();
   let width = window.innerWidth;
   const gambarRef = useRef(null);
   const judulRef = useRef(null);
@@ -19,6 +24,16 @@ const LandingPage = ({ setLoginBox, setSignupBox }) => {
   const singUpButtonHandle = () => {
     setSignupBox(true);
   };
+  useEffect(() => {
+    async function profile() {
+      await axios.get("http://localhost:3001/profile").then((response) => {
+        if (response.data.loggedIn === true) {
+          navigate(`note/${response.data.username}`);
+        }
+      });
+    }
+    profile();
+  }, [navigate]);
   useLayoutEffect(() => {
     gsap.set(
       [judulRef.current, textRef.current, tombolRef.current, gambarRef.current],
@@ -57,8 +72,13 @@ const LandingPage = ({ setLoginBox, setSignupBox }) => {
     });
   }, [width]);
   return (
-    <div className="landingpage">
-      <Navbar />
+    <div
+      className="landingpage"
+      style={
+        loginBox || signupBox ? { height: "100vh", overflow: "hidden" } : {}
+      }
+    >
+      <Navbar location={location.pathname} />
       <div className="landingpage__container">
         <div className="landingpage__gambar" ref={gambarRef}>
           <img src={Gambar} alt="Gambar Catetin" />
@@ -80,11 +100,16 @@ const LandingPage = ({ setLoginBox, setSignupBox }) => {
     </div>
   );
 };
-
+const mapStateToProps = (state) => {
+  return {
+    loginBox: state.loginBox,
+    signupBox: state.signupBox,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     setLoginBox: (data) => dispatch({ type: "LOGIN_BOX", payload: data }),
     setSignupBox: (data) => dispatch({ type: "SIGNUP_BOX", payload: data }),
   };
 };
-export default connect(null, mapDispatchToProps)(LandingPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

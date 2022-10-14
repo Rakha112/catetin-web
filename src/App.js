@@ -2,6 +2,7 @@ import LandingPage from "./pages/LandingPage";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotePage from "./pages/NotePage";
 function App() {
   const initialState = {
     loginBox: false,
@@ -31,6 +32,7 @@ function App() {
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
+          <Route path="/note/:id" element={<NotePage />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>
       </Provider>

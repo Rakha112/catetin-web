@@ -40,3 +40,30 @@
     }
   }
 }
+
+.navbar-note {
+  height: 5rem;
+  background-color: var(--warna-putih);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 0 40px;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  &__logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      margin-right: rem(5);
+      width: rem(25);
+    }
+    h1 {
+      font-size: rem(20);
+      font-weight: 500;
+    }
+  }
+}
