@@ -1,24 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/pages/notepage.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import BottomSheet from "../components/BottomSheet";
-export const NotePage = ({}) => {
+export const NotePage = (props) => {
+  const [data, setData] = useState([]);
+  const bottomSheetRef = useRef(null);
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:3001/profile")
+      .get("https://apicatetin.rakhawibowo.my.id/profile")
       .then((response) => {
         if (response.data.loggedIn === true) {
           axios
-            .get("http://localhost:3001/note", {
+            .get("https://apicatetin.rakhawibowo.my.id/note", {
               params: {
                 user: response.data.username,
               },
             })
             .then((res) => {
-              console.log(res.data);
+              setData(res.data);
             });
         }
       })
@@ -29,9 +31,17 @@ export const NotePage = ({}) => {
 
   return (
     <div className="notepage">
-      <Navbar location={"/note"} />
-      <div className="notepage__container"></div>
-      <BottomSheet />
+      <Navbar location={"/note"} bottomSheetRef={bottomSheetRef} />
+      <div className="notepage__container">
+        {data.length === 0 ? (
+          <div className="notepage__kosong">
+            <p>Belum ada catatan...</p>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+      <BottomSheet ref={bottomSheetRef} />
     </div>
   );
 };

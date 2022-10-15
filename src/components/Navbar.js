@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import gsap from "gsap";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-const Navbar = ({ setLoginBox, setSignupBox, location }) => {
+const Navbar = ({ setLoginBox, setSignupBox, location, bottomSheetRef }) => {
   const navRef = useRef(null);
   const logInButtonHandle = () => {
     setLoginBox(true);
@@ -48,7 +48,11 @@ const Navbar = ({ setLoginBox, setSignupBox, location }) => {
           <h1>a</h1>
         </div>
         <div className="navbar-note__button">
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              bottomSheetRef.current.expand();
+            }}
+          >
             <MoreVertIcon />
           </IconButton>
         </div>
