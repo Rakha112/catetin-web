@@ -26,11 +26,13 @@ const LandingPage = ({ setLoginBox, setSignupBox, loginBox, signupBox }) => {
   };
   useEffect(() => {
     async function profile() {
-      await axios.get("http://localhost:3001/profile").then((response) => {
-        if (response.data.loggedIn === true) {
-          navigate(`note/${response.data.username}`);
-        }
-      });
+      await axios
+        .get("https://apicatetin.rakhawibowo.my.id/profile")
+        .then((response) => {
+          if (response.data.loggedIn === true) {
+            navigate(`note/${response.data.username}`);
+          }
+        });
     }
     profile();
   }, [navigate]);

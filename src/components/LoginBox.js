@@ -34,7 +34,7 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
       setOpen(true);
     } else {
       axios
-        .post("http://localhost:3001/login", {
+        .post("https://apicatetin.rakhawibowo.my.id/login", {
           username: username,
           password: password,
         })
@@ -45,7 +45,7 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
             setOpen(true);
             setUsername(username);
             axios
-              .get("http://localhost:3001/profile")
+              .get("https://apicatetin.rakhawibowo.my.id/profile")
               .then((response) => {
                 if (response.data.loggedIn === true) {
                   navigate(`/note/${response.data.username}`);

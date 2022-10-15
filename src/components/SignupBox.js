@@ -52,7 +52,7 @@ const SignupBox = ({ signupBox, setSignupBox, setLoginBox }) => {
       setOpen(true);
     } else {
       axios
-        .post("http://localhost:3001/signup", {
+        .post("https://apicatetin.rakhawibowo.my.id/signup", {
           username: username,
           password: password,
         })
