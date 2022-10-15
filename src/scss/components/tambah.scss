@@ -1,0 +1,39 @@
+@use "../util/" as *;
+.tambah {
+  position: fixed;
+  right: rem(20);
+  bottom: rem(20);
+  @include breakpoint(large) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--warna-putih);
+    padding: 1rem 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(60);
+    height: rem(60);
+    background-color: var(--warna-biru);
+    border-radius: rem(20);
+    border: none;
+    transition: all 0.5s ease;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: rem(30);
+      }
+    }
+  }
+  button:hover {
+    background-color: var(--warna-biru-tua);
+  }
+}

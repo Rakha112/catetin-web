@@ -1,0 +1,2 @@
+.notecomp{background-color:#f4f6f8;cursor:pointer;margin-top:1rem}.notecomp,.notecomp .icon{align-items:center;border-radius:1.25rem;display:flex;transition:all .5s ease}.notecomp .icon{background-color:#e6ecfc;height:3.75rem;justify-content:center;width:3.75rem}.notecomp .icon img{width:2.5rem}.notecomp h1{font-size:1.25rem;margin-left:1rem;max-width:"100%";overflow:hidden!important;text-overflow:clip;white-space:nowrap}.notecomp:hover{background-color:#e7edf3}.notecomp:hover .icon{background-color:#d1d9f1}
+/*# sourceMappingURL=notecomp.css.map */

@@ -13,7 +13,6 @@
     height: 100vh;
     width: 100vw;
     background-color: var(--warna-hitam);
-    opacity: 0.5;
   }
   &__container {
     opacity: 1;
@@ -124,6 +123,48 @@
           color: var(--warna-hitam);
           background-color: var(--warna-putih);
           border: solid rem(1) var(--warna-hitam);
+        }
+      }
+    }
+    .box__atas {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      form {
+        margin: 0 0 0 1rem;
+        width: 100%;
+        input {
+          color: black;
+          background-color: unset;
+          border: none;
+          width: 100%;
+          font-size: rem(18);
+          margin: 0;
+          padding: 0;
+        }
+        input:focus {
+          outline: none;
+        }
+      }
+    }
+    .box__bawah {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      form {
+        padding: 0 1rem 0 1rem;
+        max-width: 100%;
+        margin: 0;
+        width: 100%;
+        textarea {
+          resize: none;
+          border: none;
+          width: 100%;
+          height: 20rem;
+          font-size: 14px;
+        }
+        textarea:focus {
+          outline: none;
         }
       }
     }

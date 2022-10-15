@@ -7,6 +7,8 @@ function App() {
   const initialState = {
     loginBox: false,
     signupBox: false,
+    tambahBox: false,
+    refresh: false,
   };
 
   const rootReducer = (state = initialState, action) => {
@@ -20,6 +22,16 @@ function App() {
         return {
           ...state,
           signupBox: action.payload,
+        };
+      case "TAMBAH_BOX":
+        return {
+          ...state,
+          tambahBox: action.payload,
+        };
+      case "SET_REFRESH":
+        return {
+          ...state,
+          refresh: action.payload,
         };
       default:
         return state;

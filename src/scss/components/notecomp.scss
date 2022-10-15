@@ -1,0 +1,39 @@
+@use "../util/" as *;
+
+.notecomp {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #f4f6f8;
+  border-radius: rem(20);
+  margin-top: 1rem;
+  transition: all 0.5s ease;
+  .icon {
+    border-radius: rem(20);
+    width: rem(60);
+    height: rem(60);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6ecfc;
+    transition: all 0.5s ease;
+    img {
+      width: rem(40);
+    }
+  }
+  h1 {
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: clip;
+    max-width: "100%";
+    margin-left: 1rem;
+    font-size: rem(20);
+  }
+}
+
+.notecomp:hover {
+  background-color: #e7edf3;
+  .icon {
+    background-color: #d1d9f1;
+  }
+}
