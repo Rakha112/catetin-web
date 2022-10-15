@@ -7,7 +7,13 @@ import { connect } from "react-redux";
 import gsap from "gsap";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-const Navbar = ({ setLoginBox, setSignupBox, location, bottomSheetRef }) => {
+const Navbar = ({
+  setLoginBox,
+  setSignupBox,
+  location,
+  username,
+  bottomSheetRef,
+}) => {
   const navRef = useRef(null);
   const logInButtonHandle = () => {
     setLoginBox(true);
@@ -35,8 +41,16 @@ const Navbar = ({ setLoginBox, setSignupBox, location, bottomSheetRef }) => {
           <h1>Catetin</h1>
         </div>
         <div className="navbar__button">
-          <Button buttonText={"Log In"} klik={logInButtonHandle} />
-          <Button buttonText={"Sign Up"} klik={singUpButtonHandle} />
+          <Button
+            buttonText={"Log In"}
+            klik={logInButtonHandle}
+            type={"putih"}
+          />
+          <Button
+            buttonText={"Sign Up"}
+            klik={singUpButtonHandle}
+            type={"hitam"}
+          />
         </div>
       </div>
     );
@@ -45,7 +59,7 @@ const Navbar = ({ setLoginBox, setSignupBox, location, bottomSheetRef }) => {
       <div className="navbar-note" ref={navRef}>
         <div className="navbar-note__logo">
           <img src={ProfileIcon} alt="user" />
-          <h1>a</h1>
+          <h1>{username}</h1>
         </div>
         <div className="navbar-note__button">
           <IconButton
