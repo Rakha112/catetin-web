@@ -135,7 +135,7 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
             value={password}
           />
         </form>
-        <Button buttonText={"Log In"} klik={handleSubmit} />
+        <Button buttonText={"Log In"} klik={handleSubmit} type={"hitam"} />
         <p>
           Belum punya akun ? Silahkan{" "}
           <span

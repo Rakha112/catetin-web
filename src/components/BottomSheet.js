@@ -17,7 +17,6 @@ const BottomSheet = forwardRef((props, ref) => {
   const backdropRef = useRef(null);
 
   useLayoutEffect(() => {
-    console.log("ALALALALA");
     gsap.set(bottomSheetIsiRef.current, {
       y: "100%",
     });
@@ -88,7 +87,7 @@ const BottomSheet = forwardRef((props, ref) => {
         }}
       />
       <div className="bottomsheet__isi" ref={bottomSheetIsiRef}>
-        <Button buttonText={"Log Out"} klik={logOut} />
+        <Button buttonText={"Log Out"} klik={logOut} type={"hitam"} />
       </div>
     </div>
   );

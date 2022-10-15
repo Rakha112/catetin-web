@@ -1,12 +1,10 @@
 import React from "react";
 import "../css/components/button.css";
-const Button = ({ buttonText, klik }) => {
+const Button = ({ buttonText, klik, type }) => {
   return (
     <div
       className={
-        buttonText === "Log In"
-          ? "button button__login"
-          : "button button__signup"
+        type === "hitam" ? "button button__hitam" : "button button__putih"
       }
     >
       <button

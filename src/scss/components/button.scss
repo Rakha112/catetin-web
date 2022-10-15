@@ -1,7 +1,7 @@
 @use "../util/" as *;
 
 .button {
-  &__login {
+  &__putih {
     button {
       max-width: rem(400);
       width: 80vw;
@@ -12,6 +12,7 @@
       font-weight: 500;
       font-size: rem(18);
       background-color: var(--warna-putih);
+      border: rem(1) solid var(--warna-hitam);
       transition: all 0.5s ease;
       @include breakpoint(large) {
         width: rem(130);
@@ -22,7 +23,7 @@
       background-color: var(--warna-abu-abu);
     }
   }
-  &__signup {
+  &__hitam {
     button {
       max-width: rem(400);
       width: 80vw;

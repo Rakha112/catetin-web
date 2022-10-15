@@ -92,8 +92,16 @@ const LandingPage = ({ setLoginBox, setSignupBox, loginBox, signupBox }) => {
             ingin anda tulis dan catat
           </p>
           <div className="landingpage__button" ref={tombolRef}>
-            <Button buttonText={"Sign Up"} klik={singUpButtonHandle} />
-            <Button buttonText={"Log In"} klik={logInButtonHandle} />
+            <Button
+              buttonText={"Sign Up"}
+              klik={singUpButtonHandle}
+              type={"hitam"}
+            />
+            <Button
+              buttonText={"Log In"}
+              klik={logInButtonHandle}
+              type={"putih"}
+            />
           </div>
         </div>
       </div>
