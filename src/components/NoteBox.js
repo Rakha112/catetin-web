@@ -31,33 +31,49 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
     }
     setOpen(false);
   };
-  const handleDeleteOnEdit = () => {
-    setSnackbarPesan("Tidak dapat menghapus catatan dalam keadaan Edit");
-    setSeverity("error");
-    setOpen(true);
-  };
   const handleDelete = () => {
-    axios
-      .delete("https://apicatetin.rakhawibowo.my.id/note/delete", {
-        data: {
-          judul: judul,
-          isi: isi,
-          user: username,
-        },
-      })
+    if (edit) {
+      setSnackbarPesan("Tidak dapat menghapus catatan dalam keadaan Edit");
+      setSeverity("error");
+      setOpen(true);
+    } else {
+      axios
+        .delete("https://apicatetin.rakhawibowo.my.id/note/delete", {
+          data: {
+            judul: judul,
+            isi: isi,
+            user: username,
+          },
+        })
 
-      .then(() => {
-        setSnackbarPesan("Berhasil menghapus catatan");
-        setSeverity("success");
-        setOpen(true);
-        setRefresh(true);
-        setTimeout(() => {
-          setNoteBox(false);
-        }, 2000);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+        .then(() => {
+          setSnackbarPesan("Berhasil menghapus catatan");
+          setSeverity("success");
+          setOpen(true);
+          setRefresh(true);
+          setTimeout(() => {
+            gsap.to(backdropRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              ease: "Power3.easeOut",
+            });
+            gsap.to(noteBoxRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              y: 40,
+              ease: "Power3.easeOut",
+              onComplete: () => {
+                setNoteBox(false);
+                setJudul("");
+                setIsi("");
+              },
+            });
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
   };
 
   const handleEdit = () => {
@@ -65,23 +81,44 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
   };
 
   const handleSave = () => {
-    axios
-      .put("https://apicatetin.rakhawibowo.my.id/note/update", {
-        judul: dataNote.judul,
-        judulBaru: judul,
-        isi: isi,
-        user: username,
-      })
-      .then(() => {
-        setSnackbarPesan("Berhasil menyimpan perubahan catatan");
-        setSeverity("success");
-        setOpen(true);
-        setRefresh(true);
-        setTimeout(() => {
-          setNoteBox(false);
-          setEdit(false);
-        }, 2000);
-      });
+    if (judul === "" || isi === "") {
+      setSnackbarPesan("Form tidak boleh kosong");
+      setSeverity("warning");
+      setOpen(true);
+    } else {
+      axios
+        .put("https://apicatetin.rakhawibowo.my.id/note/update", {
+          judul: dataNote.judul,
+          judulBaru: judul,
+          isi: isi,
+          user: username,
+        })
+        .then(() => {
+          setSnackbarPesan("Berhasil menyimpan perubahan catatan");
+          setSeverity("success");
+          setOpen(true);
+          setRefresh(true);
+          setTimeout(() => {
+            gsap.to(backdropRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              ease: "Power3.easeOut",
+            });
+            gsap.to(noteBoxRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              y: 40,
+              ease: "Power3.easeOut",
+              onComplete: () => {
+                setNoteBox(false);
+                setEdit(false);
+                setJudul("");
+                setIsi("");
+              },
+            });
+          }, 2000);
+        });
+    }
   };
 
   useLayoutEffect(() => {
@@ -160,11 +197,7 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
               readOnly={edit ? false : true}
             />
           </form>
-          <Button
-            buttonText={"Delete"}
-            klik={edit ? handleDeleteOnEdit : handleDelete}
-            type={"hitam"}
-          />
+          <Button buttonText={"Delete"} klik={handleDelete} type={"hitam"} />
           <Button
             buttonText={edit ? "Save" : "Edit"}
             klik={edit ? handleSave : handleEdit}

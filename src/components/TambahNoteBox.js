@@ -43,9 +43,22 @@ const TambahNoteBox = ({ tambahBox, setTambahBox, username, setRefresh }) => {
           setOpen(true);
           setRefresh(true);
           setTimeout(() => {
-            setTambahBox(false);
-            setJudul("");
-            setIsi("");
+            gsap.to(backdropRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              ease: "Power3.easeOut",
+            });
+            gsap.to(tambahBoxRef.current, {
+              duration: 0.5,
+              opacity: 0,
+              y: 40,
+              ease: "Power3.easeOut",
+              onComplete: () => {
+                setTambahBox(false);
+                setJudul("");
+                setIsi("");
+              },
+            });
           }, 2000);
         })
         .catch((err) => {
