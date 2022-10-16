@@ -9,6 +9,7 @@ import NoteComp from "../components/NoteComp";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import TambahNoteBox from "../components/TambahNoteBox";
+import NoteBox from "../components/NoteBox";
 
 export const NotePage = ({ refresh, setRefresh }) => {
   const navigate = useNavigate();
@@ -63,12 +64,13 @@ export const NotePage = ({ refresh, setRefresh }) => {
             ) : (
               <div className="notepage__list">
                 {data.map((v, i) => {
-                  return <NoteComp judul={v.judul} key={i} />;
+                  return <NoteComp judul={v.judul} key={i} data={v} />;
                 })}
               </div>
             )}
             <Tambah />
             <TambahNoteBox username={username} />
+            <NoteBox username={username} />
             <BottomSheet ref={bottomSheetRef} />
           </div>
         </div>

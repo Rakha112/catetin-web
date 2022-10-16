@@ -23,7 +23,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: rem(450);
     background-color: var(--warna-putih);
     @include breakpoint(medium) {
       width: rem(550);
@@ -42,7 +41,7 @@
       transform: rotate(135deg);
     }
     p {
-      margin-top: rem(12);
+      margin: rem(12) 0 rem(12) 0;
       text-align: center;
       font-size: rem(12);
       span {
@@ -152,7 +151,7 @@
       flex-direction: column;
       width: 100%;
       form {
-        padding: 0 1rem 0 1rem;
+        padding: 0 1rem rem(10) 1rem;
         max-width: 100%;
         margin: 0;
         width: 100%;
@@ -166,6 +165,9 @@
         textarea:focus {
           outline: none;
         }
+      }
+      .button {
+        padding-bottom: rem(10);
       }
     }
   }

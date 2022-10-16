@@ -8,7 +8,9 @@ function App() {
     loginBox: false,
     signupBox: false,
     tambahBox: false,
+    noteBox: false,
     refresh: false,
+    dataNote: { judul: "", isi: "" },
   };
 
   const rootReducer = (state = initialState, action) => {
@@ -28,10 +30,20 @@ function App() {
           ...state,
           tambahBox: action.payload,
         };
+      case "NOTE_BOX":
+        return {
+          ...state,
+          noteBox: action.payload,
+        };
       case "SET_REFRESH":
         return {
           ...state,
           refresh: action.payload,
+        };
+      case "SET_DATA_NOTE":
+        return {
+          ...state,
+          dataNote: action.payload,
         };
       default:
         return state;
