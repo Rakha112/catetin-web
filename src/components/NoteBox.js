@@ -120,7 +120,6 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
         });
     }
   };
-  console.log(dataNote);
   useLayoutEffect(() => {
     if (noteBox) {
       gsap.set(noteBoxRef.current, {
@@ -147,7 +146,7 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
   return (
     <div className={noteBox ? "box aktif" : "box"}>
       <div className="box__backdrop" ref={backdropRef} />
-      <div className="box__container" ref={noteBoxRef}>
+      <div className="box__container big" ref={noteBoxRef}>
         <div className="box__atas">
           <form
             onSubmit={(e) => {
