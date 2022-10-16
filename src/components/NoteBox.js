@@ -120,7 +120,7 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
         });
     }
   };
-
+  console.log(dataNote);
   useLayoutEffect(() => {
     if (noteBox) {
       gsap.set(noteBoxRef.current, {
@@ -197,12 +197,15 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
               readOnly={edit ? false : true}
             />
           </form>
-          <Button buttonText={"Delete"} klik={handleDelete} type={"hitam"} />
+          <p>
+            {dataNote.status} {dataNote.tgl_edit}
+          </p>
           <Button
             buttonText={edit ? "Save" : "Edit"}
             klik={edit ? handleSave : handleEdit}
             type={"hitam"}
           />
+          <Button buttonText={"Delete"} klik={handleDelete} type={"putih"} />
         </div>
       </div>
       <SnackBar
