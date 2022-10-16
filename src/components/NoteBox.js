@@ -149,7 +149,11 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
       <div className="box__backdrop" ref={backdropRef} />
       <div className="box__container" ref={noteBoxRef}>
         <div className="box__atas">
-          <form action="">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <input
               type="text"
               placeholder="Judul..."

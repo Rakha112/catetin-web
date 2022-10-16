@@ -95,7 +95,11 @@ const TambahNoteBox = ({ tambahBox, setTambahBox, username, setRefresh }) => {
       <div className="box__backdrop" ref={backdropRef} />
       <div className="box__container" ref={tambahBoxRef}>
         <div className="box__atas">
-          <form action="">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <input
               type="text"
               placeholder="Judul..."
