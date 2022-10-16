@@ -27,7 +27,6 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
   };
 
   const handleSubmit = () => {
-    setOpen(false);
     if (username === "" || password === "") {
       setSnackbarPesan("Form tidak boleh kosong");
       setSeverity("warning");
@@ -64,6 +63,12 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
         .catch((err) => {
           console.log(err.response);
         });
+    }
+  };
+
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
     }
   };
 
@@ -133,6 +138,9 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
               setPassword(e.target.value);
             }}
             value={password}
+            onKeyDown={(e) => {
+              handleEnterKey(e);
+            }}
           />
         </form>
         <Button buttonText={"Log In"} klik={handleSubmit} type={"hitam"} />

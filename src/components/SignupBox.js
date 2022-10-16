@@ -91,7 +91,11 @@ const SignupBox = ({ signupBox, setSignupBox, setLoginBox }) => {
         });
     }
   };
-
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
   return (
     <div className={signupBox ? "box aktif" : "box"}>
       <div className="box__backdrop" ref={backdropRef} />
@@ -135,6 +139,9 @@ const SignupBox = ({ signupBox, setSignupBox, setLoginBox }) => {
               setPassword(e.target.value);
             }}
             value={password}
+            onKeyDown={(e) => {
+              handleEnterKey(e);
+            }}
           />
         </form>
         <Button buttonText={"Sign Up"} klik={handleSubmit} type={"hitam"} />
