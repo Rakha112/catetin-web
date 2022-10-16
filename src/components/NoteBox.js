@@ -143,6 +143,14 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
     }
   }, [noteBox]);
 
+  useEffect(() => {
+    if (noteBox) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [noteBox]);
+
   return (
     <div className={noteBox ? "box aktif" : "box"}>
       <div className="box__backdrop" ref={backdropRef} />

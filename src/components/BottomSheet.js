@@ -4,6 +4,8 @@ import React, {
   useImperativeHandle,
   useLayoutEffect,
   useRef,
+  useEffect,
+  useState,
 } from "react";
 import Button from "./Button";
 import "../css/components/bottomsheet.css";
@@ -15,6 +17,7 @@ const BottomSheet = forwardRef((props, ref) => {
   const bottomSheetRef = useRef(null);
   const bottomSheetIsiRef = useRef(null);
   const backdropRef = useRef(null);
+  const [isExpand, setIsExpand] = useState(false);
 
   useLayoutEffect(() => {
     gsap.set(bottomSheetIsiRef.current, {
@@ -33,6 +36,7 @@ const BottomSheet = forwardRef((props, ref) => {
       display: "block",
       zIndex: 1,
       onComplete: () => {
+        setIsExpand(true);
         gsap.to(bottomSheetIsiRef.current, {
           y: 0,
           duration: 0.5,
@@ -53,6 +57,7 @@ const BottomSheet = forwardRef((props, ref) => {
       opacity: 0,
       duration: 0.5,
       onComplete: () => {
+        setIsExpand(false);
         gsap.to(bottomSheetRef.current, {
           display: "none",
           zIndex: -999,
@@ -77,6 +82,13 @@ const BottomSheet = forwardRef((props, ref) => {
         }
       });
   };
+  useEffect(() => {
+    if (isExpand) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isExpand]);
   return (
     <div className="bottomsheet" ref={bottomSheetRef}>
       <div

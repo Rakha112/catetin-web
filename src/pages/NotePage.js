@@ -53,30 +53,28 @@ export const NotePage = ({ refresh, setRefresh }) => {
   } else {
     return (
       <div className="notepage">
-        <div className="notepage__wrapper">
-          <div className="notepage__container">
-            <Navbar
-              location={"/note"}
-              bottomSheetRef={bottomSheetRef}
-              username={capitalizeFirstLetter(username)}
-            />
-            {data.length === 0 ? (
-              <div className="notepage__kosong">
-                <p>Belum ada catatan...</p>
-              </div>
-            ) : (
-              <div className="notepage__list">
-                {data.map((v, i) => {
-                  return <NoteComp judul={v.judul} key={i} data={v} />;
-                })}
-              </div>
-            )}
-            <Tambah />
-            <TambahNoteBox username={username} />
-            <NoteBox username={username} />
-            <BottomSheet ref={bottomSheetRef} />
-          </div>
+        <div className="notepage__container">
+          <Navbar
+            location={"/note"}
+            bottomSheetRef={bottomSheetRef}
+            username={capitalizeFirstLetter(username)}
+          />
+          {data.length === 0 ? (
+            <div className="notepage__kosong">
+              <p>Belum ada catatan...</p>
+            </div>
+          ) : (
+            <div className="notepage__list">
+              {data.map((v, i) => {
+                return <NoteComp judul={v.judul} key={i} data={v} />;
+              })}
+            </div>
+          )}
         </div>
+        <Tambah />
+        <TambahNoteBox username={username} />
+        <NoteBox username={username} />
+        <BottomSheet ref={bottomSheetRef} />
       </div>
     );
   }

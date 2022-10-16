@@ -1,10 +1,9 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import CatetinLogo from "../images/CATETIN2.png";
 import ProfileIcon from "../icons/user.png";
 import "../css/components/navbar.css";
 import Button from "./Button";
 import { connect } from "react-redux";
-import gsap from "gsap";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 const Navbar = ({
@@ -21,21 +20,10 @@ const Navbar = ({
   const singUpButtonHandle = () => {
     setSignupBox(true);
   };
-  useLayoutEffect(() => {
-    gsap.set(navRef.current, {
-      opacity: 0,
-      y: 40,
-    });
-    gsap.to(navRef.current, {
-      duration: 1.5,
-      opacity: 1,
-      y: 0,
-      ease: "Power3.easeOut",
-    });
-  }, []);
+
   if (location === "/") {
     return (
-      <div className="navbar" ref={navRef}>
+      <div className="navbar">
         <div className="navbar__logo">
           <img src={CatetinLogo} alt="logo" />
           <h1>Catetin</h1>

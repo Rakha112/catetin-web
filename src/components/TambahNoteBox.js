@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import "../css/components/box.css";
 import Close from "../icons/plus.png";
@@ -89,7 +89,13 @@ const TambahNoteBox = ({ tambahBox, setTambahBox, username, setRefresh }) => {
       });
     }
   }, [tambahBox]);
-
+  useEffect(() => {
+    if (tambahBox) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [tambahBox]);
   return (
     <div className={tambahBox ? "box aktif" : "box"}>
       <div className="box__backdrop" ref={backdropRef} />

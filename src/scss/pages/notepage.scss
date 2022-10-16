@@ -1,13 +1,7 @@
 @use "../util/" as *;
 
 .notepage {
-  height: 100vh;
-  overflow: hidden;
-  &__wrapper {
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-  }
+  height: 100%;
   &__container {
     margin: 0 auto;
     max-width: rem(1200);
