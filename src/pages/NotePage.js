@@ -18,6 +18,9 @@ export const NotePage = ({ refresh, setRefresh }) => {
   const [loading, setLoading] = useState(true);
   const bottomSheetRef = useRef(null);
   axios.defaults.withCredentials = true;
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   useEffect(() => {
     axios
       .get("https://apicatetin.rakhawibowo.my.id/profile")
@@ -55,7 +58,7 @@ export const NotePage = ({ refresh, setRefresh }) => {
             <Navbar
               location={"/note"}
               bottomSheetRef={bottomSheetRef}
-              username={username}
+              username={capitalizeFirstLetter(username)}
             />
             {data.length === 0 ? (
               <div className="notepage__kosong">
