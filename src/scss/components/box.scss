@@ -84,46 +84,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      &__login {
-        button {
-          max-width: rem(400);
-          width: 80vw;
-          cursor: pointer;
-          border: solid rem(1) black;
-          border-radius: rem(50);
-          padding: rem(8) 0;
-          font-weight: 500;
-          font-size: rem(18);
-          color: var(--warna-putih);
-          background-color: black;
-          transition: all 0.5s ease;
-        }
-        button:hover {
-          color: var(--warna-hitam);
-          background-color: var(--warna-putih);
-          border: solid rem(1) var(--warna-hitam);
-        }
-      }
-      &__signup {
-        button {
-          max-width: rem(400);
-          width: 80vw;
-          cursor: pointer;
-          border: solid rem(1) black;
-          border-radius: rem(50);
-          padding: rem(8) 0;
-          font-weight: 500;
-          font-size: rem(18);
-          color: var(--warna-putih);
-          background-color: black;
-          transition: all 0.5s ease;
-        }
-        button:hover {
-          color: var(--warna-hitam);
-          background-color: var(--warna-putih);
-          border: solid rem(1) var(--warna-hitam);
-        }
-      }
     }
     .box__atas {
       display: flex;
@@ -168,6 +128,10 @@
       }
       .button {
         padding-bottom: rem(10);
+        button {
+          width: 90%;
+          max-width: 90%;
+        }
       }
     }
   }
