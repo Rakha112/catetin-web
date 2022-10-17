@@ -78,6 +78,7 @@ const BottomSheet = forwardRef((props, ref) => {
       .get("https://apicatetin.rakhawibowo.my.id/logout")
       .then((response) => {
         if (response.data.logout === true) {
+          document.body.style.overflow = "unset";
           navigate("/");
         }
       });
