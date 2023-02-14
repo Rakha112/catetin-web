@@ -38,7 +38,7 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
       setOpen(true);
     } else {
       axios
-        .delete("https://apicatetin.rakhawibowo.my.id/note/delete", {
+        .delete(process.env.REACT_APP_API + "/note/delete", {
           data: {
             judul: judul,
             isi: isi,
@@ -87,7 +87,7 @@ const NoteBox = ({ noteBox, setNoteBox, username, setRefresh, dataNote }) => {
       setOpen(true);
     } else {
       axios
-        .put("https://apicatetin.rakhawibowo.my.id/note/update", {
+        .put(process.env.REACT_APP_API + "/note/update", {
           judul: dataNote.judul,
           judulBaru: judul,
           isi: isi,

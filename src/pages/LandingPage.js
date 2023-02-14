@@ -27,7 +27,7 @@ const LandingPage = ({ setLoginBox, setSignupBox, loginBox, signupBox }) => {
   useEffect(() => {
     async function profile() {
       await axios
-        .get("https://apicatetin.rakhawibowo.my.id/profile")
+        .get(process.env.REACT_APP_API + "/profile")
         .then((response) => {
           if (response.data.loggedIn === true) {
             navigate(`note/${response.data.username}`);

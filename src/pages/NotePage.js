@@ -23,12 +23,12 @@ export const NotePage = ({ refresh, setRefresh }) => {
   }
   useEffect(() => {
     axios
-      .get("https://apicatetin.rakhawibowo.my.id/profile")
+      .get(process.env.REACT_APP_API + "/profile")
       .then((response) => {
         if (response.data.loggedIn === true) {
           setUsername(response.data.username);
           axios
-            .get("https://apicatetin.rakhawibowo.my.id/note", {
+            .get(process.env.REACT_APP_API + "/note", {
               params: {
                 user: response.data.username,
               },

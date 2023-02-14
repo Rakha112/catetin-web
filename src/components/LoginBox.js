@@ -33,7 +33,7 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
       setOpen(true);
     } else {
       axios
-        .post("https://apicatetin.rakhawibowo.my.id/login", {
+        .post(process.env.REACT_APP_API + "/login", {
           username: username,
           password: password,
         })
@@ -44,7 +44,7 @@ const LoginBox = ({ loginBox, setLoginBox, setSignupBox, setUsername }) => {
             setOpen(true);
             setUsername(username);
             axios
-              .get("https://apicatetin.rakhawibowo.my.id/profile")
+              .get(process.env.REACT_APP_API + "/profile")
               .then((response) => {
                 if (response.data.loggedIn === true) {
                   navigate(`/note/${response.data.username}`);

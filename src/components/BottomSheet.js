@@ -74,14 +74,12 @@ const BottomSheet = forwardRef((props, ref) => {
     [expand, close]
   );
   const logOut = () => {
-    axios
-      .get("https://apicatetin.rakhawibowo.my.id/logout")
-      .then((response) => {
-        if (response.data.logout === true) {
-          document.body.style.overflow = "unset";
-          navigate("/");
-        }
-      });
+    axios.get(process.env.REACT_APP_API + "/logout").then((response) => {
+      if (response.data.logout === true) {
+        document.body.style.overflow = "unset";
+        navigate("/");
+      }
+    });
   };
   useEffect(() => {
     if (isExpand) {

@@ -32,7 +32,7 @@ const TambahNoteBox = ({ tambahBox, setTambahBox, username, setRefresh }) => {
       setOpen(true);
     } else {
       axios
-        .post("https://apicatetin.rakhawibowo.my.id/note/insert", {
+        .post(process.env.REACT_APP_API + "/note/insert", {
           judul: judul,
           isi: isi,
           user: username,
