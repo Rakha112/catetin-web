@@ -4,4 +4,6 @@ Catetin App merupakan aplikasi yang berfungsi untuk Mencatat apapun yang anda in
 
 ## Demo
 
-[![Catetin](https://img.youtube.com/vi/OBcxXWdQuL4/default.jpg)](https://youtu.be/OBcxXWdQuL4)
+Klik untuk memutar video
+
+[![Catetin](https://img.youtube.com/vi/OBcxXWdQuL4/maxresdefault.jpg)](https://youtu.be/OBcxXWdQuL4)
